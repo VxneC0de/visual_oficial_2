@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./nav.css">
+    <title>Sing In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+
+    <div class="container">
+
+        <nav>
+            <div class="wrapper_nav">
+                
+                <div class="logo"><a href="#">LOGO.</a></div>
+                <input type="radio" name="slider" id="menu-btn">
+                <input type="radio" name="slider" id="close-btn">
+                
+                <ul class="nav-links">
+                    
+                    <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+                    
+                    <li>
+                        <a href="#" class="desktop-item">Productos ▾</a>
+                        <input type="checkbox" id="showDrop">
+                        <label for="showDrop" class="mobile-item">Productos ▾</label>
+                        
+                        <ul class="drop-menu">
+                            <li><a href="#">Empanadas</a></li>
+                            <li><a href="#">Pastelitos</a></li>
+                            <li><a href="#">Especiales</a></li>
+                            <li><a href="#">Bebidas Frías</a></li>
+                            <li><a href="#">Otros</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#">Contactos</a></li>
+                
+                </ul>
+                
+                <div class="header-right">
+
+                    <div class="cart_icon">
+                        <a href="#"><ion-icon name="cart"></ion-icon></a>
+                        <span>0</span>
+                    </div>
+                    
+                    <div class="user_icon">
+                        <a href="#"><ion-icon name="person"></ion-icon></a>
+                    </div>
+                    
+                </div>
+
+                <div class="cart_sidebar">
+                  
+                  <button class="close_cart"><i class="fas fa-times"></i></button>
+                  
+                  <div class="cart_header">
+                    <h2>Tu Pedido</h2>
+                  </div>
+
+                  <div class="cart_items">
+                    
+                    <div class="cart_item">
+
+                      <div class="item_details">
+                        <div class="item_details_title">
+                            <p>Registrate para poder hacer tu pedido.</p>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                  
+                </div>
+
+                <div class="user_sidebar">
+                  
+                  <button class="close_user"><i class="fas fa-times"></i></button>
+                  
+                  <div class="user_header">
+                    <div class="name_user">
+                      <h2>Tu Pedido</h2>
+                    </div>
+                    <div class="email_user">
+                      <h4>Disfruta del sabor de una buena empanada</h4>
+                    </div>
+                  </div>
+
+                  <div class="user_items">
+                    
+                    <div class="user_item">
+
+                      <div class="item_details">
+                        <div class="item_details_title_user">
+                          <i class='bx bx-log-in-circle'></i>
+                          <a href="#">Registrate para poder hacer tu pedido.</a>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                  
+                </div>
+                
+                <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+            
+            </div>
+        
+        </nav>
+
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const userIcon = document.querySelector('.user_icon a');
+        const userSidebar = document.querySelector('.user_sidebar');
+        const closeuser = document.querySelector('.close_user');
+    
+        userIcon.addEventListener('click', function(event) {
+          event.preventDefault();
+          userSidebar.style.right = '0';
+        });
+    
+        closeuser.addEventListener('click', function() {
+          userSidebar.style.right = '-100%';
+        });
+        
+      });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const cartIcon = document.querySelector('.cart_icon a');
+        const cartSidebar = document.querySelector('.cart_sidebar');
+        const closeCart = document.querySelector('.close_cart');
+    
+        cartIcon.addEventListener('click', function(event) {
+          event.preventDefault();
+          cartSidebar.style.right = '0';
+        });
+    
+        closeCart.addEventListener('click', function() {
+          cartSidebar.style.right = '-100%';
+        });
+        
+      });
+    </script>
+    
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</body>
+</html>
