@@ -370,11 +370,11 @@ nav input{
 }
   
 .cart_sidebar::-webkit-scrollbar-track {
-    background: var(--white);
+    background: #ffffff;
 }
   
 .cart_sidebar::-webkit-scrollbar-thumb {
-    background: var(--grey_2);
+    background: #242526;
 }
 
 /*======================= USER =======================*/
@@ -510,11 +510,11 @@ nav input{
 }
   
 .user_sidebar::-webkit-scrollbar-track {
-    background: var(--white);
+    background: #ffffff;
 }
   
 .user_sidebar::-webkit-scrollbar-thumb {
-    background: var(--grey_2);
+    background: #242526;
 }
 
 
@@ -569,7 +569,7 @@ nav input{
     }
 
     ::-webkit-scrollbar-thumb {
-        background: var(--grey_2);
+        background: #242526;
     }
 
     #menu-btn:checked ~ .nav-links{
