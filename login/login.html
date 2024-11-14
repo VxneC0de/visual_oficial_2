@@ -30,39 +30,6 @@
           
           </ul>
           
-          <div class="header-right">
-
-              <div class="cart_icon">
-                  <a href="#"><ion-icon name="cart"></ion-icon></a>
-                  <span>0</span>
-              </div>
-              
-          </div>
-
-          <div class="cart_sidebar">
-            
-            <button class="close_cart"><i class="fas fa-times"></i></button>
-            
-            <div class="cart_header">
-              <h2>Tu Pedido</h2>
-            </div>
-
-            <div class="cart_items">
-              
-              <div class="cart_item">
-
-                <div class="item_details">
-                  <div class="item_details_title">
-                      <p>Registrate para poder hacer tu pedido.</p>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-            
-          </div>
-          
           <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
       
       </div>
@@ -81,13 +48,13 @@
                 </div>
     
                 <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Usuario o Correo">
+                    <input type="text" class="input-field" placeholder="Usuario o Correo" id="usernameLogin">
                     <i class="bx bx-user"></i>
                     <div class="error"></div>
                 </div>
     
                 <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Contraseña">
+                    <input type="password" class="input-field" placeholder="Contraseña" id="passwordLogin">
                     <i class="bx bx-lock-alt"></i>
                     <div class="error"></div>
                 </div>
@@ -201,6 +168,35 @@
         }
     
     </script>
+
+    <script>
+        document.getElementById('login').addEventListener('submit', function(event) {
+            const usernameLogin = document.getElementById('usernameLogin');
+            const passwordLogin = document.getElementById('passwordLogin');
+            let valid = true;
+        
+            document.querySelectorAll('.error').forEach((el) => el.innerHTML = '');
+        
+            if (usernameLogin.value.trim() === '') {
+                setError(usernameLogin, 'El nombre de usuario es requerido');
+                valid = false;
+            } else {
+                setSuccess(usernameLogin);
+            }
+        
+            if (passwordLogin.value.trim() === '') {
+                setError(passwordLogin, 'La contraseña es requerida');
+                valid = false;
+            } else {
+                setSuccess(passwordLogin);
+            }
+        
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+        
+    </script>
     
     <script>
     const setError = (element, message) => {
@@ -271,24 +267,6 @@
             event.preventDefault();
         }
     });
-    </script>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const cartIcon = document.querySelector('.cart_icon a');
-        const cartSidebar = document.querySelector('.cart_sidebar');
-        const closeCart = document.querySelector('.close_cart');
-    
-        cartIcon.addEventListener('click', function(event) {
-          event.preventDefault();
-          cartSidebar.style.right = '0';
-        });
-    
-        closeCart.addEventListener('click', function() {
-          cartSidebar.style.right = '-100%';
-        });
-        
-      });
     </script>
     
     
