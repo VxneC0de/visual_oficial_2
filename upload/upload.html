@@ -214,78 +214,86 @@
     </script>   
 
     <script>
-      const setError = (element, message) => {
-          const errorDisplay = element.parentElement.querySelector(".error, .error_two");
-          errorDisplay.innerText = message;
-          errorDisplay.style.display = 'block';
-      }
+    
+    const setError = (element, message) => {
+        const errorDisplay = element.parentElement.querySelector(".error, .error_two");
+        errorDisplay.innerText = message;
+        errorDisplay.style.display = 'block';
+    }
   
-      const setSuccess = element => {
-          const inputBox = element.parentElement;
-          const errorDisplay = inputBox.querySelector(".error, .error_two");
-          errorDisplay.innerText = '';
-          errorDisplay.style.display = 'none';
-      }
+    const setSuccess = element => {
+        const inputBox = element.parentElement;
+        const errorDisplay = inputBox.querySelector(".error, .error_two");
+        errorDisplay.innerText = '';
+        errorDisplay.style.display = 'none';
+    }
   
-      document.getElementById('productForm').addEventListener('submit', function(event) {
-          const productName = document.getElementById('productName');
-          const productCategory = document.getElementById('productCategory');
-          const productPrice = document.getElementById('productPrice');
-          const productAvailability = document.getElementById('productAvailability');
-          const productDate = document.getElementById('productDate');
-          const productImage = document.getElementById('productImage');
-          let valid = true;
+    document.getElementById('productForm').addEventListener('submit', function(event) {
+        const productName = document.getElementById('productName');
+        const productCategory = document.getElementById('productCategory');
+        const productPrice = document.getElementById('productPrice');
+        const productAvailability = document.getElementById('productAvailability');
+        const productDate = document.getElementById('productDate');
+        const productImage = document.getElementById('productImage');
+        let valid = true;
   
-          // Limpiar mensajes de error
-          document.querySelectorAll('.error, .error_two').forEach((el) => el.innerHTML = '');
-  
-          if (productName.value.trim() === '') {
-              setError(productName, 'El nombre del producto es requerido');
+        // Limpiar mensajes de error
+        document.querySelectorAll('.error, .error_two').forEach((el) => el.innerHTML = '');
+
+        const currentDate = new Date(); 
+        const selectedDate = new Date(productDate.value);
+        
+        if (productName.value.trim() === '') {
+              setError(productName, 'El nombre del producto es requerido.');
               valid = false;
           } else {
-              setSuccess(productName);
-          }
+            setSuccess(productName);
+        }
   
-          if (productCategory.value.trim() === '') {
-              setError(productCategory, 'La categoría es requerida');
+        if (productCategory.value.trim() === '') {
+              setError(productCategory, 'La categoría es requerida.');
               valid = false;
           } else {
-              setSuccess(productCategory);
-          }
+            setSuccess(productCategory);
+        }
   
-          if (productPrice.value.trim() === '') {
-              setError(productPrice, 'El precio es requerido');
+        if (productPrice.value.trim() === '') {
+              setError(productPrice, 'El precio es requerido.');
               valid = false;
           } else {
-              setSuccess(productPrice);
-          }
+            setSuccess(productPrice);
+        }
   
-          if (productAvailability.value.trim() === '') {
+        if (productAvailability.value.trim() === '') {
               setError(productAvailability, 'La disponibilidad es requerida');
               valid = false;
           } else {
-              setSuccess(productAvailability);
-          }
-  
-          if (productDate.value.trim() === '') {
-              setError(productDate, 'La fecha es requerida');
+            setSuccess(productAvailability);
+        }
+
+        if (productDate.value.trim() === '') { 
+            setError(productDate, 'La fecha es requerida.'); 
+            valid = false; 
+        } else if (selectedDate < currentDate) { 
+            setError(productDate, 'Ingresa una fecha válida.'); valid = false; 
+        } else { 
+            setSuccess(productDate); 
+        }
+
+        if (productImage.value.trim() === '') {
+              setError(productImage, 'La imagen es requerida.');
               valid = false;
           } else {
-              setSuccess(productDate);
-          }
+            setSuccess(productImage);
+        }
   
-          if (productImage.value.trim() === '') {
-              setError(productImage, 'La imagen es requerida');
-              valid = false;
-          } else {
-              setSuccess(productImage);
-          }
-  
-          if (!valid) {
-              event.preventDefault();
-          }
-      });
-  </script>
+        if (!valid) {
+            event.preventDefault();
+        }
+
+    });
+    
+    </script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

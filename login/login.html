@@ -178,14 +178,14 @@
             document.querySelectorAll('.error').forEach((el) => el.innerHTML = '');
         
             if (usernameLogin.value.trim() === '') {
-                setError(usernameLogin, 'El nombre de usuario es requerido');
+                setError(usernameLogin, 'El nombre de usuario es requerido.');
                 valid = false;
             } else {
                 setSuccess(usernameLogin);
             }
         
             if (passwordLogin.value.trim() === '') {
-                setError(passwordLogin, 'La contraseña es requerida');
+                setError(passwordLogin, 'La contraseña es requerida.');
                 valid = false;
             } else {
                 setSuccess(passwordLogin);
@@ -227,17 +227,17 @@
         document.querySelectorAll('.error').forEach((el) => el.innerHTML = '');
     
         if (usernameRegister.value.trim() === '') {
-            setError(usernameRegister, 'El nombre de usuario es requerido');
+            setError(usernameRegister, 'El nombre de usuario es requerido.');
             valid = false;
         } else {
             setSuccess(usernameRegister);
         }
     
         if (emailRegister.value.trim() === '') {
-            setError(emailRegister, 'El email es requerido');
+            setError(emailRegister, 'El email es requerido.');
             valid = false;
         } else if (!isValidEmail(emailRegister.value.trim())) {
-            setError(emailRegister, 'Proporcionar un email válido');
+            setError(emailRegister, 'Proporcionar un email válido.');
             valid = false;
         } else {
             setSuccess(emailRegister);
@@ -278,14 +278,14 @@
             document.querySelectorAll('.error').forEach((el) => el.innerHTML = '');
         
             if (usernameLogin.value.trim() === '') {
-                setError(usernameLogin, 'El nombre de usuario es requerido');
+                setError(usernameLogin, 'El nombre de usuario es requerido.');
                 valid = false;
             } else {
                 setSuccess(usernameLogin);
             }
         
             if (passwordLogin.value.trim() === '') {
-                setError(passwordLogin, 'La contraseña es requerida');
+                setError(passwordLogin, 'La contraseña es requerida.');
                 valid = false;
             } else {
                 setSuccess(passwordLogin);

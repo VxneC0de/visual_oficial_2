@@ -98,7 +98,7 @@
 
         <section class="content">
 
-            <form action="#" class="form-box" enctype="multipart/form-data">
+            <form action="#" class="form-box" enctype="multipart/form-data" id="productForm">
     
                 <div class="register-container" id="register">
         
@@ -109,13 +109,13 @@
                     <div class="two-forms">
                         
                         <div class="input-box">
-                            <input type="text" class="input-field" placeholder="Nombre del Producto">
+                            <input type="text" class="input-field" placeholder="Nombre del Producto" id="productName">
                             <i class='bx bxs-food-menu iconoOne'></i>
                             <div class="error_two"></div>
                         </div>
                         
                         <div class="input-box select">
-                            <select class="input-field select-custom">
+                            <select class="input-field select-custom" id="productCategory">
                                 <option value="" disabled selected>Elegir una Categoría</option>
                                 <option value="categoria1">Empanadas</option>
                                 <option value="categoria2">Pastelitos</option>
@@ -132,13 +132,13 @@
                     <div class="two-forms">
                         
                         <div class="input-box">
-                            <input type="text" class="input-field" placeholder="Precio">
+                            <input type="text" class="input-field" placeholder="Precio" id="productPrice">
                             <i class='bx bxs-dollar-circle'></i>
                             <div class="error_two"></div>
                         </div>
                         
                         <div class="input-box select">
-                            <select class="input-field select-custom">
+                            <select class="input-field select-custom" id="productAvailability">
                                 <option value="" disabled selected>Elegir Disponibilidad</option>
                                 <option value="1">Disponible</option>
                                 <option value="2">No Disponible</option>
@@ -150,20 +150,20 @@
                     </div>
                     
                     <div class="input-box">
-                        <input type="date" class="input-field" placeholder="Fecha">
+                        <input type="date" class="input-field" placeholder="Fecha" id="productDate">
                         <i class='bx bxs-calendar'></i>
                         <div class="error"></div>
                     </div>
     
                     <div class="input-box img_box">
-                        <input type="file" class="input-field">
+                        <input type="file" class="input-field" id="productImage">
                         <label for="file-upload"></label>
                         <i class='bx bxs-image-alt'></i>
                         <div class="error"></div>
                     </div>
     
                     <div class="input-box">
-                        <textarea class="textarea-field" placeholder="Descripción" maxlength="150"></textarea>
+                        <textarea class="textarea-field" placeholder="Descripción" maxlength="150" id="productDescription"></textarea>
                         <i class='bx bxs-comment-detail textarea-icon'></i>
                         <div class="error"></div>
                     </div>                
@@ -211,7 +211,89 @@
           });
           
         });
-    </script>   
+    </script>
+
+    <script>
+    
+    const setError = (element, message) => {
+        const errorDisplay = element.parentElement.querySelector(".error, .error_two");
+        errorDisplay.innerText = message;
+        errorDisplay.style.display = 'block';
+    }
+  
+    const setSuccess = element => {
+        const inputBox = element.parentElement;
+        const errorDisplay = inputBox.querySelector(".error, .error_two");
+        errorDisplay.innerText = '';
+        errorDisplay.style.display = 'none';
+    }
+  
+    document.getElementById('productForm').addEventListener('submit', function(event) {
+        const productName = document.getElementById('productName');
+        const productCategory = document.getElementById('productCategory');
+        const productPrice = document.getElementById('productPrice');
+        const productAvailability = document.getElementById('productAvailability');
+        const productDate = document.getElementById('productDate');
+        const productImage = document.getElementById('productImage');
+        let valid = true;
+  
+        // Limpiar mensajes de error
+        document.querySelectorAll('.error, .error_two').forEach((el) => el.innerHTML = '');
+
+        const currentDate = new Date(); 
+        const selectedDate = new Date(productDate.value);
+        
+        if (productName.value.trim() === '') {
+              setError(productName, 'El nombre del producto es requerido.');
+              valid = false;
+          } else {
+            setSuccess(productName);
+        }
+  
+        if (productCategory.value.trim() === '') {
+              setError(productCategory, 'La categoría es requerida.');
+              valid = false;
+          } else {
+            setSuccess(productCategory);
+        }
+  
+        if (productPrice.value.trim() === '') {
+              setError(productPrice, 'El precio es requerido.');
+              valid = false;
+          } else {
+            setSuccess(productPrice);
+        }
+  
+        if (productAvailability.value.trim() === '') {
+              setError(productAvailability, 'La disponibilidad es requerida.');
+              valid = false;
+          } else {
+            setSuccess(productAvailability);
+        }
+
+        if (productDate.value.trim() === '') { 
+            setError(productDate, 'La fecha es requerida.'); 
+            valid = false; 
+        } else if (selectedDate < currentDate) { 
+            setError(productDate, 'Ingresa una fecha válida.'); valid = false; 
+        } else { 
+            setSuccess(productDate); 
+        }
+
+        if (productImage.value.trim() === '') {
+              setError(productImage, 'La imagen es requerida.');
+              valid = false;
+          } else {
+            setSuccess(productImage);
+        }
+  
+        if (!valid) {
+            event.preventDefault();
+        }
+        
+    });
+    
+    </script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
