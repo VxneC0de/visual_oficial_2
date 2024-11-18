@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./menu.css">
+    <title>Sing In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="wrapper_nav">
+        
+        <div class="logo"><a href="#">LOGO.</a></div>
+        <input type="radio" name="slider" id="menu-btn">
+        <input type="radio" name="slider" id="close-btn">
+        
+        <ul class="nav-links">
+          
+          <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+          <li><a href="#main">Inicio</a></li>
+
+          <li>
+              
+            <a href="#" class="desktop-item">Productos ▾</a>
+            <input type="checkbox" id="showDrop">
+            <label for="showDrop" class="mobile-item">Productos ▾</label>
+            
+            <ul class="drop-menu">
+                <li><a href="#">Subir Producto</a></li>
+                <li><a href="#">Ver Productos</a></li>
+            </ul>
+          
+          </li>
+          
+          <li><a href="#">Órdenes</a></li>
+      
+        </ul> 
+        
+        <div class="header-right">
+            
+            <div class="user_icon">
+                <a href="#"><ion-icon name="person"></ion-icon></a>
+            </div>
+            
+        </div>
+
+        <div class="user_sidebar">
+          
+          <button class="close_user"><i class="fas fa-times"></i></button>
+          
+          <div class="user_header">
+            <div class="name_user">
+              <h2>Carol</h2>
+            </div>
+            <div class="email_user">
+              <h4>carol@gmail.com</h4>
+            </div>
+          </div>
+
+          <div class="user_items">
+
+            <div class="user_item">
+
+              <div class="item_details">
+                <div class="item_details_title_user">
+                  <i class='bx bx-cog'></i>
+                  <a href="#">Editar Perfil</a>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="user_item">
+
+              <div class="item_details">
+                <div class="item_details_title_user">
+                  <i class='bx bx-log-out-circle'></i>
+                  <a href="#">Cerrar Sesión</a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          
+        </div>
+        
+        <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    
+    </div>
+
+  </nav>
+
+        <section class="hero" id="main">
+
+          <div class="header_content">
+            
+            <div class="hero_text">
+              <h2>#Sabores para cualquier momento</h2>
+              <h1>- Delicias Frescas y Crujientes</h1>
+              <p>Impulsa tu día con nuestras empanadas, pastelitos y jugos naturales. ¡Disfruta de una combinación perfecta de sabor y energía en tus mañanas!</p>
+
+            </div>
+
+          </div>
+
+            <div class="header_image">
+              <img src="./assets/hero_2.png" alt="hero" class="img_hero_2">
+            </div>
+
+        </section>
+
+        <section class="section_container banner_container">
+
+          <div class="banner_card">
+            <p>PRUÉBALAS HOY</p> 
+            <h4>EMPANADA MÁS POPULAR</h4>
+          </div>
+
+          <div class="banner_card">
+            <p>PRUÉBALAS HOY</p> 
+            <h4>MÁS SABOR <br> MÁS DIVERSIÓN</h4>
+          </div>
+
+          <div class="banner_card">
+            <p>PRUÉBALAS HOY</p> 
+            <h4>FRESCAS Y PICANTES</h4>
+          </div>
+
+        </section>
+
+        <section class="section_container order_container" id="promociones">
+
+          <h2 class="section_header">ELIGE Y DISFRUTA</h2>
+
+          <p class="section_description">
+            PROMOCIONES
+          </p>
+
+          <div class="order_grid">
+
+            <div class="order_card">
+              <img src="./assets/order-2.png" alt="order">
+              <h4>Mechada</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+            <div class="order_card">
+              <img src="./assets/order-3.png" alt="order">
+              <h4>Pollo</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section class="section_container order_container" id="empanadas">
+
+          <p class="section_description">
+            EMPANADAS
+          </p>
+
+          <div class="order_grid">
+
+            <div class="order_card">
+              <img src="./assets/order-2.png" alt="order">
+              <h4>Mechada</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+            <div class="order_card">
+              <img src="./assets/order-3.png" alt="order">
+              <h4>Pollo</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section class="section_container order_container" id="pastelitos">
+
+          <p class="section_description">
+            PASTELITOS
+          </p>
+
+          <div class="order_grid">
+
+            <div class="order_card">
+              <img src="./assets/order-2.png" alt="order">
+              <h4>Mechada</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+            <div class="order_card">
+              <img src="./assets/order-3.png" alt="order">
+              <h4>Pollo</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section class="section_container order_container" id="especiales">
+
+          <p class="section_description">
+            ESPECIALES
+          </p>
+
+          <div class="order_grid">
+
+            <div class="order_card">
+              <img src="./assets/order-2.png" alt="order">
+              <h4>Mechada</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+            <div class="order_card">
+              <img src="./assets/order-3.png" alt="order">
+              <h4>Pollo</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section class="section_container order_container" id="bebidas">
+
+          <p class="section_description">
+            BEBIDAS FRÍAS
+          </p>
+
+          <div class="order_grid">
+
+            <div class="order_card">
+              <img src="./assets/order-2.png" alt="order">
+              <h4>Mechada</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+            <div class="order_card">
+              <img src="./assets/order-3.png" alt="order">
+              <h4>Pollo</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section class="section_container order_container" id="otros">
+
+          <p class="section_description">
+            OTROS
+          </p>
+
+          <div class="order_grid">
+
+            <div class="order_card">
+              <img src="./assets/order-2.png" alt="order">
+              <h4>Mechada</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+            <div class="order_card">
+              <img src="./assets/order-3.png" alt="order">
+              <h4>Pollo</h4>
+              <h2>40bs</h2>
+
+              <button class="btn_hero_2">Agregar al carrito</button>
+            </div>
+
+          </div>
+
+        </section>
+
+        <footer class="footer">
+        
+            <div class="section_container footer_container">
+
+              <div class="footer_logo">
+                <img src="./assets/logo-white.png" alt="Logo">
+              </div>
+
+              <div class="footer_content">
+
+                <p>Bienvenidos a nuestra página de empanadas, donde cada bocado es una fiesta de sabores. Nos enorgullecemos de ofrecer empanadas frescas y deliciosas, hechas con ingredientes de la más alta calidad. ¡Gracias por elegirnos y disfrutar de nuestras especialidades!</p>
+
+                <div>
+
+                  <ul class="footer_links">
+
+                    <li>
+                      <span><i class='bx bx-map'></i></span>
+                      Calle los Apatames, Caracas, 1011
+                    </li>
+
+                    <li>
+                      <span><i class='bx bx-envelope'></i></span>
+                      cocteldelosbatidos2025@gmail.com
+                    </li>
+
+                  </ul>
+
+                  <div class="footer_socials">
+                    <a href="#" class="a_hero_2"><i class='bx bxl-instagram'></i></a>
+                    <a href="#" class="a_hero_2"><i class='bx bxl-whatsapp'></i></a>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="footer_bar">
+              &copy; El Cóctel de los Batidos 2025. All right reserved
+              <a href="#">
+                <i class='bx bx-code-alt'></i>
+                By VxneC0de
+              </a>
+            </div>
+      
+        </footer>
+
+
+
+    
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const userIcon = document.querySelector('.user_icon a');
+            const userSidebar = document.querySelector('.user_sidebar');
+            const closeuser = document.querySelector('.close_user');
+        
+            userIcon.addEventListener('click', function(event) {
+              event.preventDefault();
+              userSidebar.style.right = '0';
+            });
+        
+            closeuser.addEventListener('click', function() {
+              userSidebar.style.right = '-100%';
+            });
+            
+          });
+        </script>
+    
+        <script>
+          
+          document.querySelectorAll('.menu_item').forEach(item => {
+            item.addEventListener('click', () => {
+              document.getElementById('menu-btn').checked = false;
+            });
+          });
+
+        </script>
+
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <script>
+          const scrollRevealOption = {
+            distance: "50px",
+            origin: "bottom",
+            duration: 1000,
+          };
+          
+          ScrollReveal().reveal('.header_image img', {
+            ...scrollRevealOption,            
+            origin: "right",
+          });
+
+          ScrollReveal().reveal('.header_content h2', {
+            ...scrollRevealOption,
+            delay: 500,
+          });
+
+          ScrollReveal().reveal('.header_content h1', {
+            ...scrollRevealOption,
+            delay: 1000,
+          });
+        </script>
+
+        <script>
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+              e.preventDefault();
+              
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+              });
+            });
+          });
+        </script>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</body>
+</html>
