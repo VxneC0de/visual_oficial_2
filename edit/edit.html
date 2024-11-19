@@ -194,6 +194,20 @@
         </footer>
 
     </div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script>
+        ScrollReveal({ 
+        // reset: true,
+        distance: "80px",
+        duration: 2000,
+        delay: 200
+        });
+    
+        ScrollReveal().reveal('nav', { origin: 'top' });
+        ScrollReveal().reveal('.footer', { origin: 'bottom' });
+    </script>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {

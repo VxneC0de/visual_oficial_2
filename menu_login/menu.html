@@ -170,7 +170,7 @@
             
             <div class="hero_text">
               <h2>#Sabores para cualquier momento</h2>
-              <h1>- Delicias Frescas y Crujientes</h1>
+              <h1>¡El Cóctel de los Batidos 2025 te da la bienvenida!</h1>
               <p>Impulsa tu día con nuestras empanadas, pastelitos y jugos naturales. ¡Disfruta de una combinación perfecta de sabor y energía en tus mañanas!</p>
 
             </div>
@@ -472,26 +472,17 @@
         <script src="https://unpkg.com/scrollreveal"></script>
 
         <script>
-          const scrollRevealOption = {
-            distance: "50px",
-            origin: "bottom",
-            duration: 1000,
-          };
+          ScrollReveal({ 
+            // reset: true,
+            distance: "80px",
+            duration: 2000,
+            delay: 200
+          });
           
-          ScrollReveal().reveal('.header_image img', {
-            ...scrollRevealOption,            
-            origin: "right",
-          });
-
-          ScrollReveal().reveal('.header_content h2', {
-            ...scrollRevealOption,
-            delay: 500,
-          });
-
-          ScrollReveal().reveal('.header_content h1', {
-            ...scrollRevealOption,
-            delay: 1000,
-          });
+          ScrollReveal().reveal('nav', { origin: 'top' });
+          ScrollReveal().reveal('.banner_card, .section_description, .order_card', { origin: 'bottom' });
+          ScrollReveal().reveal('.hero_text h2, .hero_text h1, .hero_p, .footer_logo, .footer_content p', { origin: 'left' });
+          ScrollReveal().reveal('.header_image, .top2, .footer_links li, .footer_socials a', { origin: 'right' });
         </script>
 
         <script>

@@ -137,27 +137,6 @@ nav .wrapper_nav{
     align-items: center;
     gap: 30px;
 }
-
-.cart_icon{
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.cart_icon span{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    background-color: #ffffff;
-    border: 2px #347928 solid;
-    color: #347928;
-    border-radius: 50%;
-    position: absolute;
-    right: -20px;
-    top: -1px;
-}
   
 .header-right .cart_icon a,
 .header-right .user_icon a {
@@ -427,6 +406,7 @@ nav input{
     text-align: center;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.589);
 }
+
 
 .header_content h1 span{
     font-size: 3rem;
