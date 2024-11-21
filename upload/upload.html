@@ -154,13 +154,19 @@
                         <i class='bx bxs-calendar'></i>
                         <div class="error"></div>
                     </div>
-    
-                    <div class="input-box img_box">
-                        <input type="file" class="input-field" id="productImage">
-                        <label for="file-upload"></label>
-                        <i class='bx bxs-image-alt'></i>
-                        <div class="error"></div>
+
+                    <div class="input-box_2">
+                        <input type="file" id="file" accept="image/*" hidden>
+                        <div class="img-area" data-img="">
+                            <i class='bx bxs-image-alt icon'></i>
+                            <h3>Imagen</h3>
+                            <p>La imagen debe ser inferior a <span>2MB</span></p>
+                        </div>
+                        <div class="select-image" id="select-image"> 
+                            <p>Elegir imagen</p> 
+                        </div>
                     </div>
+                    <div id="imageError" class="error_2"></div>
     
                     <div class="input-box">
                         <textarea class="textarea-field" placeholder="Descripción" maxlength="150" id="productDescription"></textarea>
@@ -194,20 +200,6 @@
         </footer>
 
     </div>
-
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <script>
-        ScrollReveal({ 
-        // reset: true,
-        distance: "80px",
-        duration: 2000,
-        delay: 200
-        });
-    
-        ScrollReveal().reveal('nav', { origin: 'top' });
-        ScrollReveal().reveal('.footer', { origin: 'bottom' });
-    </script>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -228,84 +220,153 @@
     </script>   
 
     <script>
-    
-    const setError = (element, message) => {
-        const errorDisplay = element.parentElement.querySelector(".error, .error_two");
-        errorDisplay.innerText = message;
-        errorDisplay.style.display = 'block';
-    }
-  
-    const setSuccess = element => {
-        const inputBox = element.parentElement;
-        const errorDisplay = inputBox.querySelector(".error, .error_two");
-        errorDisplay.innerText = '';
-        errorDisplay.style.display = 'none';
-    }
-  
-    document.getElementById('productForm').addEventListener('submit', function(event) {
-        const productName = document.getElementById('productName');
-        const productCategory = document.getElementById('productCategory');
-        const productPrice = document.getElementById('productPrice');
-        const productAvailability = document.getElementById('productAvailability');
-        const productDate = document.getElementById('productDate');
-        const productImage = document.getElementById('productImage');
-        let valid = true;
-  
-        // Limpiar mensajes de error
-        document.querySelectorAll('.error, .error_two').forEach((el) => el.innerHTML = '');
-
-        const currentDate = new Date(); 
-        const selectedDate = new Date(productDate.value);
+        const setError = (element, message) => {
+            const errorDisplay = element.parentElement.querySelector(".error, .error_two");
+            if (errorDisplay) {
+                errorDisplay.innerText = message;
+                errorDisplay.style.display = 'block';
+            } else {
+                // For image error
+                const imageErrorDisplay = document.getElementById('imageError');
+                imageErrorDisplay.innerText = message;
+                imageErrorDisplay.style.display = 'block';
+            }
+        }
         
-        if (productName.value.trim() === '') {
-              setError(productName, 'El nombre del producto es requerido.');
-              valid = false;
-          } else {
-            setSuccess(productName);
+        const setSuccess = element => {
+            const errorDisplay = element.parentElement.querySelector(".error, .error_two");
+            if (errorDisplay) {
+                errorDisplay.innerText = '';
+                errorDisplay.style.display = 'none';
+            } else {
+                // For image error
+                const imageErrorDisplay = document.getElementById('imageError');
+                imageErrorDisplay.innerText = '';
+                imageErrorDisplay.style.display = 'none';
+            }
         }
-  
-        if (productCategory.value.trim() === '') {
-              setError(productCategory, 'La categoría es requerida.');
-              valid = false;
-          } else {
-            setSuccess(productCategory);
-        }
-  
-        if (productPrice.value.trim() === '') {
-              setError(productPrice, 'El precio es requerido.');
-              valid = false;
-          } else {
-            setSuccess(productPrice);
-        }
-  
-        if (productAvailability.value.trim() === '') {
-              setError(productAvailability, 'La disponibilidad es requerida');
-              valid = false;
-          } else {
-            setSuccess(productAvailability);
-        }
+        
+        document.getElementById('productForm').addEventListener('submit', function(event) {
+            const productName = document.getElementById('productName');
+            const productCategory = document.getElementById('productCategory');
+            const productPrice = document.getElementById('productPrice');
+            const productAvailability = document.getElementById('productAvailability');
+            const productDate = document.getElementById('productDate');
+            const file = document.getElementById('file');
+            let valid = true;
+        
+            // Limpiar mensajes de error
+            document.querySelectorAll('.error, .error_two').forEach((el) => el.innerHTML = '');
+        
+            const currentDate = new Date();
+            const selectedDate = new Date(productDate.value);
+        
+            if (productName.value.trim() === '') {
+                setError(productName, 'El nombre del producto es requerido.');
+                valid = false;
+            } else {
+                setSuccess(productName);
+            }
+        
+            if (productCategory.value.trim() === '') {
+                setError(productCategory, 'La categoría es requerida.');
+                valid = false;
+            } else {
+                setSuccess(productCategory);
+            }
+        
+            if (productPrice.value.trim() === '') {
+                setError(productPrice, 'El precio es requerido.');
+                valid = false;
+            } else {
+                setSuccess(productPrice);
+            }
+        
+            if (productAvailability.value.trim() === '') {
+                setError(productAvailability, 'La disponibilidad es requerida');
+                valid = false;
+            } else {
+                setSuccess(productAvailability);
+            }
+        
+            if (productDate.value.trim() === '') { 
+                setError(productDate, 'La fecha es requerida.'); 
+                valid = false; 
+            } else if (selectedDate < currentDate) { 
+                setError(productDate, 'Ingresa una fecha válida.'); valid = false; 
+            } else { 
+                setSuccess(productDate); 
+            }
+        
+            if (file.value.trim() === '') {
+                setError(file, 'La imagen es requerida.');
+                valid = false;
+            } else {
+                setSuccess(file);
+            }
+        
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+        
+        document.querySelector('.select-image').addEventListener('click', function () {
+            document.querySelector('#file').click();
+        })
+        
+        document.querySelector('#file').addEventListener('change', function () {
+            const image = this.files[0];
+            if (image.size < 2000000) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const allImg = document.querySelector('.img-area').querySelectorAll('img');
+                    allImg.forEach(item => item.remove());
+                    const imgUrl = reader.result;
+                    const img = document.createElement('img');
+                    img.src = imgUrl;
+                    document.querySelector('.img-area').appendChild(img);
+                    document.querySelector('.img-area').classList.add('active');
+                    document.querySelector('.img-area').dataset.img = image.name;
+                    setSuccess(document.querySelector('#file'));  // Set success when image is valid
+                }
+                reader.readAsDataURL(image);
+            } else {
+                alert("Image size more than 2MB");
+                setError(document.querySelector('#file'), 'La imagen debe ser inferior a 2MB.');
+            }
+        })
+        
+    </script>
 
-        if (productDate.value.trim() === '') { 
-            setError(productDate, 'La fecha es requerida.'); 
-            valid = false; 
-        } else if (selectedDate < currentDate) { 
-            setError(productDate, 'Ingresa una fecha válida.'); valid = false; 
-        } else { 
-            setSuccess(productDate); 
-        }
+    <script>
+        
+        const selectImage = document.querySelector('.select-image');
+        const inputFile = document.querySelector('#file');
+        const imgArea = document.querySelector('.img-area');
 
-        if (productImage.value.trim() === '') {
-              setError(productImage, 'La imagen es requerida.');
-              valid = false;
-          } else {
-            setSuccess(productImage);
-        }
-  
-        if (!valid) {
-            event.preventDefault();
-        }
+        selectImage.addEventListener('click', function () {
+	        inputFile.click();
+        })
 
-    });
+        inputFile.addEventListener('change', function () {
+	        const image = this.files[0]
+	        if(image.size < 2000000) {
+		        const reader = new FileReader();
+		        reader.onload = ()=> {
+			        const allImg = imgArea.querySelectorAll('img');
+			        allImg.forEach(item=> item.remove());
+			        const imgUrl = reader.result;
+			        const img = document.createElement('img');
+			        img.src = imgUrl;
+			        imgArea.appendChild(img);
+			        imgArea.classList.add('active');
+			        imgArea.dataset.img = image.name;
+		        }
+		        reader.readAsDataURL(image);
+	        } else {
+		        alert("Image size more than 2MB");
+	        }
+        })
     
     </script>
 
