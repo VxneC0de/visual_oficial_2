@@ -372,6 +372,136 @@
 
         </section>
 
+        <div class="modal_overlay"></div>
+        <!--
+        <section class="show_order">
+
+          <button class="close_show_order"><i class="fas fa-times"></i></button>
+
+          <div class="order_header">
+              <h2>Informacion del pedido</h2>
+          </div>
+          <div class="user_info">
+              <div class="name_field">
+                  <label for="name">Nombre:</label>
+                  <input type="text" id="name" value="John" readonly>
+              </div>
+              <div class="surname_field">
+                  <label for="surname">Apellido:</label>
+                  <input type="text" id="surname" value="Doe" readonly>
+              </div>
+              <div class="email_field">
+                  <label for="email">Correo Electronico:</label>
+                  <input type="email" id="email" value="john.doe@example.com" readonly>
+              </div>
+              <div class="cellphone_field">
+                  <label for="cellphone">Celular:</label>
+                  <input type="tel" id="cellphone" value="123-456-7890" readonly>
+              </div>
+          </div>
+          <div class="table_details">
+              <div class="table_header_list">
+                  <div class="table_name">
+                      <p>Productos</p>
+                  </div>
+              </div>
+              <div class="table_section_list">
+                  <table>
+                      <thead>
+                          <th>Nombre del producto</th>
+                          <th>Cantidad</th>
+                          <th>Monto total</th>
+                      </thead>
+                      <tbody>
+                          <td>Churros</td>
+                          <td>2</td>
+                          <td>$4,00</td>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+          
+          <div class="total_amount">
+              <label for="total">Total:</label>
+              <span id="total">$4,00</span>
+          </div>
+
+          <div class="payment_method">
+            <label for="payment">Forma de Pago:</label>
+            <span id="payment">Tarjeta de Crédito</span>
+        </div>
+
+          <div class="order_time">
+              <label for="date">Fecha del Pedido:</label>
+              <input type="date" id="date">
+              <label for="time">Hora del Pedido:</label>
+              <input type="time" id="time">
+          </div>
+          <div class="status_list">
+              <label for="status_pedido">Estatus del Pedido</label>
+              <span id="status_pedido">En Proceso.</span>
+          </div>
+        </section>
+        -->
+
+        
+
+<section class="show_order">
+    <button class="close_show_order"><i class="fas fa-times"></i></button>
+
+    <div class="order_content">
+        <div class="image_section">
+            <!-- Imagen del producto -->
+            <img src="ruta_de_la_imagen" alt="Producto" width="200">
+        </div>
+
+        <div class="details_section">
+            <div class="input_group">
+                <label for="productName">Nombre:</label>
+                <input type="text" id="productName" value="Nombre del Producto" readonly>
+            </div>
+
+            <div class="input_group">
+                <label for="productCategory">Categoría:</label>
+                <input type="text" id="productCategory" value="Categoría del Producto" readonly>
+            </div>
+
+            <div class="input_group">
+                <label for="productPrice">Precio:</label>
+                <input type="text" id="productPrice" value="Precio del Producto" readonly>
+            </div>
+
+            <div class="input_group">
+                <label for="productDescription">Descripción:</label>
+                <textarea id="productDescription" rows="4" readonly>Descripción del Producto</textarea>
+            </div>
+
+            <div class="input_group">
+                <label for="productStatus">Estado:</label>
+                <input type="text" id="productStatus" value="Estado del Producto" readonly>
+            </div>
+
+            <div class="input_group quantity">
+                <label for="productQuantity">Cantidad:</label>
+                <div class="quantity_control">
+                    <button class="decrement">-</button>
+                    <input type="text" id="productQuantity" value="1" readonly>
+                    <button class="increment">+</button>
+                </div>
+            </div>
+
+            <div class="input_group">
+                <button class="add_to_cart">Mandar al carrito</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+      
+      <div class="modal_overlay"></div>
+      
+      
+
         <footer class="footer">
         
             <div class="section_container footer_container">
@@ -468,6 +598,36 @@
           });
 
         </script>
+
+<script>
+  document.querySelector('.btn_hero_2').addEventListener('click', function() {
+    document.querySelector('.modal_overlay').style.display = 'block';
+    document.querySelector('.show_order').style.display = 'block';
+});
+
+document.querySelector('.close_show_order').addEventListener('click', function() {
+    document.querySelector('.modal_overlay').style.display = 'none';
+    document.querySelector('.show_order').style.display = 'none';
+});
+
+document.querySelector('.increment').addEventListener('click', function() {
+    const quantityInput = document.getElementById('productQuantity');
+    let quantity = parseInt(quantityInput.value);
+    quantity++;
+    quantityInput.value = quantity;
+});
+
+document.querySelector('.decrement').addEventListener('click', function() {
+    const quantityInput = document.getElementById('productQuantity');
+    let quantity = parseInt(quantityInput.value);
+    if (quantity > 1) {
+        quantity--;
+        quantityInput.value = quantity;
+    }
+});
+
+
+</script>
 
         <script src="https://unpkg.com/scrollreveal"></script>
 
