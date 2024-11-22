@@ -386,6 +386,14 @@ nav input{
     margin-inline: auto;
 }
 
+.header_image{
+    margin-top: 5rem;
+}
+
+.header_content {
+    margin-top: 5rem;
+}
+
 .header_content h2{
     max-width: 400px;
     margin-inline: auto;
@@ -626,7 +634,6 @@ nav input{
     }
 }
 
-
 @media screen and (max-width: 970px) {
     
     .wrapper_nav {
@@ -756,10 +763,18 @@ nav input{
   
 }
 
-@media only screen and (max-width: 455px) {
+@media screen and (max-width: 455px) {
 
     .wrapper_nav .logo a{
         font-size: 20px;
+    }
+
+    .user_header h4 {
+        font-size: 13px;
+    }
+
+    .user_item .item_details .item_details_title_user a {
+        font-size: 15px;
     }
 }
 
@@ -817,7 +832,6 @@ nav input{
       justify-content: space-around;
     }
 }
-
 
 @media screen and (min-width: 540px) {
 
@@ -920,11 +934,19 @@ nav input{
         text-align: center;
         margin-top: 10px;
     }
+
+    .header_image{
+        margin-top: 0px;
+    }
+    
+    .header_content {
+        margin-top: 0px;
+    }
 }
 
-@media screen and (max-width: 570px){
-    .hero{
-        height: 100vh;
+@media screen and (max-width: 570px) {
+    .hero {
+        height: auto;
     }
 }
 
@@ -934,4 +956,3 @@ nav input{
         font-size: 15px;
     }
 }
-
