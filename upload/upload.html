@@ -257,9 +257,11 @@
         
             // Limpiar mensajes de error
             document.querySelectorAll('.error, .error_two').forEach((el) => el.innerHTML = '');
-        
-            const currentDate = new Date();
-            const selectedDate = new Date(productDate.value);
+
+            const currentDate = new Date(); 
+            currentDate.setHours(0, 0, 0, 0); // Establecer la hora a 00:00:00 para comparar solo la fecha 
+            const selectedDate = new Date(productDate.value); 
+            selectedDate.setHours(0, 0, 0, 0);
         
             if (productName.value.trim() === '') {
                 setError(productName, 'El nombre del producto es requerido.');
@@ -293,7 +295,8 @@
                 setError(productDate, 'La fecha es requerida.'); 
                 valid = false; 
             } else if (selectedDate < currentDate) { 
-                setError(productDate, 'Ingresa una fecha válida.'); valid = false; 
+                setError(productDate, 'Ingresa una fecha válida.'); 
+                valid = false; 
             } else { 
                 setSuccess(productDate); 
             }
