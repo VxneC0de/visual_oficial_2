@@ -1032,6 +1032,19 @@ nav input{
       align-items: center;
       justify-content: space-around;
     }
+
+    nav .wrapper_nav {
+        line-height: 35px;
+    }
+
+    .user_header{
+        height: 100px;
+    }
+
+    .cart_header{
+        margin-top: 25px;
+    }
+
 }
 
 @media screen and (min-width: 540px) {
