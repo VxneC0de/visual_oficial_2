@@ -232,20 +232,33 @@
                 imageErrorDisplay.style.display = 'block';
             }
         }
-        
-        const setSuccess = element => {
+
+        const setSuccess = (element) => {
             const errorDisplay = element.parentElement.querySelector(".error, .error_two");
-            if (errorDisplay) {
-                errorDisplay.innerText = '';
-                errorDisplay.style.display = 'none';
-            } else {
-                // For image error
-                const imageErrorDisplay = document.getElementById('imageError');
-                imageErrorDisplay.innerText = '';
-                imageErrorDisplay.style.display = 'none';
-            }
+                if (errorDisplay) {
+                    errorDisplay.innerText = '';
+                    errorDisplay.style.display = 'none';
+                } else {
+                    // For image error
+                    const imageErrorDisplay = document.getElementById('imageError');
+                    imageErrorDisplay.innerText = '';
+                    imageErrorDisplay.style.display = 'none';
+                }
         }
-        
+
+        const isValidDate = (selectedDate) => {
+            // Obtener la fecha actual ajustada a tu zona horaria (Venezuela Time)
+            let currentDate = new Date();
+            currentDate.setHours(0, 0, 0, 0); // Establecer la hora a 00:00:00
+
+            // Formatear las fechas para comparación 'YYYY-MM-DD'
+            const currentDateString = currentDate.toISOString().split('T')[0];
+            const selectedDateObject = new Date(selectedDate);
+            const selectedDateString = selectedDateObject.toISOString().split('T')[0];
+
+            return selectedDateString >= currentDateString;
+        }
+
         document.getElementById('productForm').addEventListener('submit', function(event) {
             const productName = document.getElementById('productName');
             const productCategory = document.getElementById('productCategory');
@@ -254,69 +267,64 @@
             const productDate = document.getElementById('productDate');
             const file = document.getElementById('file');
             let valid = true;
-        
+
             // Limpiar mensajes de error
             document.querySelectorAll('.error, .error_two').forEach((el) => el.innerHTML = '');
 
-            const currentDate = new Date(); 
-            currentDate.setHours(0, 0, 0, 0); // Establecer la hora a 00:00:00 para comparar solo la fecha 
-            const selectedDate = new Date(productDate.value); 
-            selectedDate.setHours(0, 0, 0, 0);
-        
             if (productName.value.trim() === '') {
                 setError(productName, 'El nombre del producto es requerido.');
                 valid = false;
             } else {
                 setSuccess(productName);
             }
-        
+
             if (productCategory.value.trim() === '') {
                 setError(productCategory, 'La categoría es requerida.');
                 valid = false;
             } else {
                 setSuccess(productCategory);
             }
-        
+
             if (productPrice.value.trim() === '') {
                 setError(productPrice, 'El precio es requerido.');
                 valid = false;
             } else {
                 setSuccess(productPrice);
             }
-        
+
             if (productAvailability.value.trim() === '') {
                 setError(productAvailability, 'La disponibilidad es requerida');
                 valid = false;
             } else {
                 setSuccess(productAvailability);
             }
-        
+
             if (productDate.value.trim() === '') { 
                 setError(productDate, 'La fecha es requerida.'); 
                 valid = false; 
-            } else if (selectedDate < currentDate) { 
+            } else if (!isValidDate(productDate.value)) { 
                 setError(productDate, 'Ingresa una fecha válida.'); 
                 valid = false; 
             } else { 
                 setSuccess(productDate); 
             }
-        
+
             if (file.value.trim() === '') {
                 setError(file, 'La imagen es requerida.');
                 valid = false;
             } else {
                 setSuccess(file);
             }
-        
+
             if (!valid) {
                 event.preventDefault();
             }
         });
-        
+
         document.querySelector('.select-image').addEventListener('click', function () {
             document.querySelector('#file').click();
         })
-        
+
         document.querySelector('#file').addEventListener('change', function () {
             const image = this.files[0];
             if (image.size < 2000000) {
@@ -331,7 +339,7 @@
                     document.querySelector('.img-area').classList.add('active');
                     document.querySelector('.img-area').dataset.img = image.name;
                     setSuccess(document.querySelector('#file'));  // Set success when image is valid
-                }
+                }           
                 reader.readAsDataURL(image);
             } else {
                 alert("Image size more than 2MB");
@@ -339,38 +347,6 @@
             }
         })
         
-    </script>
-
-    <script>
-        
-        const selectImage = document.querySelector('.select-image');
-        const inputFile = document.querySelector('#file');
-        const imgArea = document.querySelector('.img-area');
-
-        selectImage.addEventListener('click', function () {
-	        inputFile.click();
-        })
-
-        inputFile.addEventListener('change', function () {
-	        const image = this.files[0]
-	        if(image.size < 2000000) {
-		        const reader = new FileReader();
-		        reader.onload = ()=> {
-			        const allImg = imgArea.querySelectorAll('img');
-			        allImg.forEach(item=> item.remove());
-			        const imgUrl = reader.result;
-			        const img = document.createElement('img');
-			        img.src = imgUrl;
-			        imgArea.appendChild(img);
-			        imgArea.classList.add('active');
-			        imgArea.dataset.img = image.name;
-		        }
-		        reader.readAsDataURL(image);
-	        } else {
-		        alert("Image size more than 2MB");
-	        }
-        })
-    
     </script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

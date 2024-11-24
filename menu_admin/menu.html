@@ -303,6 +303,65 @@
 
         </section>
 
+        <div class="modal_overlay"></div>
+        
+        <section class="show_order">
+          
+          <button class="close_show_order"><i class="fas fa-times"></i></button>
+          
+          <div class="order_content">
+
+            <div class="image_section">
+              <!-- Imagen del producto -->
+              <img src="./assets/order-1.png" alt="Producto" width="200">
+            </div>
+
+            <div class="details_section">
+              
+              <div class="input_group">
+                <label for="productName">Nombre:</label>
+                <input type="text" id="productName" value="Nombre del Producto" readonly>
+              </div>
+
+              <div class="input_group">
+                <label for="productCategory">Categoría:</label>
+                <input type="text" id="productCategory" value="Categoría del Producto" readonly>
+              </div>
+
+              <div class="input_group">
+                <label for="productPrice">Precio:</label>
+                <input type="text" id="productPrice" value="Precio del Producto" readonly>
+              </div>
+
+              <div class="input_group">
+                <label for="productDescription">Descripción:</label>
+                <textarea id="productDescription" rows="4" readonly>Descripción del Producto</textarea>
+              </div>
+
+              <div class="input_group">
+                <label for="productStatus">Estado:</label>
+                <input type="text" id="productStatus" value="Estado del Producto" readonly>
+              </div>
+
+              <div class="input_group quantity">
+                <label for="productQuantity">Cantidad:</label>
+                <div class="quantity_control">
+                    <button class="decrement">-</button>
+                    <input type="text" id="productQuantity" value="1" readonly>
+                    <button class="increment">+</button>
+                </div>
+              </div>
+
+              <div class="input_group">
+                <button class="add_to_cart">Mandar al carrito</button>
+              </div>
+
+            </div>
+
+          </div>
+        
+        </section>
+
         <footer class="footer">
         
             <div class="section_container footer_container">
@@ -381,6 +440,36 @@
             });
           });
 
+        </script>
+
+        <script>
+        
+          document.querySelector('.btn_hero_2').addEventListener('click', function() {
+            document.querySelector('.modal_overlay').style.display = 'block';
+            document.querySelector('.show_order').style.display = 'flex';
+          });
+
+          document.querySelector('.close_show_order').addEventListener('click', function() {
+            document.querySelector('.modal_overlay').style.display = 'none';
+            document.querySelector('.show_order').style.display = 'none';
+          });
+
+         document.querySelector('.increment').addEventListener('click', function() {
+            const quantityInput = document.getElementById('productQuantity');
+            let quantity = parseInt(quantityInput.value);
+            quantity++;
+            quantityInput.value = quantity;
+          });
+
+          document.querySelector('.decrement').addEventListener('click', function() {
+            const quantityInput = document.getElementById('productQuantity');
+            let quantity = parseInt(quantityInput.value);
+            if (quantity > 1) {
+              quantity--;
+              quantityInput.value = quantity;
+            }
+          });
+  
         </script>
 
         <script src="https://unpkg.com/scrollreveal"></script>
