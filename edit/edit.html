@@ -155,15 +155,22 @@
                         <div class="error"></div>
                     </div>
 
+                    <div class="input-box_2 img_edit">
+                        <div class="img-area_2">
+                            <label for="#">Imagen Actual:</label>
+                            <img src="#" alt="Imagen Actual" width="100">
+                        </div>
+                    </div>
+
                     <div class="input-box_2">
                         <input type="file" id="file" accept="image/*" hidden>
                         <div class="img-area" data-img="">
                             <i class='bx bxs-image-alt icon'></i>
-                            <h3>Imagen</h3>
+                            <h3>Imagen Nueva</h3>
                             <p>La imagen debe ser inferior a <span>2MB</span></p>
                         </div>
                         <div class="select-image" id="select-image"> 
-                            <p>Elegir imagen</p> 
+                            <p>Elegir nueva imagen</p> 
                         </div>
                     </div>
                     <div id="imageError" class="error_2"></div>
@@ -266,6 +273,7 @@
         const productAvailability = document.getElementById('productAvailability');
         const productDate = document.getElementById('productDate');
         const file = document.getElementById('file');
+        const currentImage = document.querySelector('.img-area_2 img'); // Selección de la imagen actual
         let valid = true;
 
         // Limpiar mensajes de error
@@ -309,11 +317,12 @@
             setSuccess(productDate); 
         }
 
-        if (file.value.trim() === '') {
-            setError(file, 'La imagen es requerida.');
-            valid = false;
-        } else {
-            setSuccess(file);
+        // Verificar la imagen actual 
+        if (file.value.trim() === '' && (!currentImage || currentImage.src.trim() === '')) { 
+            setError(file, 'La imagen es requerida.'); 
+            valid = false; 
+        } else { setSuccess(file); 
+            
         }
 
         if (!valid) {
