@@ -217,7 +217,7 @@
               <h4>Mechada</h4>
               <h2>40bs</h2>
 
-              <button class="btn_hero_2">Agregar al carrito</button>
+              <button class="btn_hero_3">Agregar al carrito</button>
             </div>
 
             <div class="order_card">
@@ -225,7 +225,7 @@
               <h4>Pollo</h4>
               <h2>40bs</h2>
 
-              <button class="btn_hero_2">Agregar al carrito</button>
+              <button class="btn_hero_3">Agregar al carrito</button>
             </div>
 
           </div>
@@ -430,6 +430,72 @@
           </div>
         
         </section>
+
+        <section class="show_order_pro">
+          <button class="close_show_order_pro"><i class="fas fa-times"></i></button>
+          <div class="order_content">
+            <div class="image_section">
+              <img src="./assets/order-1.png" alt="Producto" width="200">
+            </div>
+            <div class="details_section">
+              <div class="input_group">
+                <label for="productName">Nombre:</label>
+                <input type="text" id="productName" value="Nombre del Producto" readonly>
+              </div>
+              <div class="input_group">
+                <label for="productCategory">Categoría:</label>
+                <input type="text" id="productCategory" value="Categoría del Producto" readonly>
+              </div>
+              <div class="input_group">
+                <label for="productPrice">Precio:</label>
+                <input type="text" id="productPrice" value="Precio del Producto" readonly>
+              </div>
+              <div class="input_group">
+                <label for="productDescription">Descripción:</label>
+                <textarea id="productDescription" rows="4" readonly>Descripción del Producto</textarea>
+              </div>
+              <div class="input_group">
+                <label for="productStatus">Estado:</label>
+                <input type="text" id="productStatus" value="Estado del Producto" readonly>
+              </div>
+              <div class="input_group quantity">
+                <label for="productQuantity">Cantidad:</label>
+                <div class="quantity_control">
+                  <button class="decrement">-</button>
+                  <input type="text" id="productQuantity" value="1" readonly>
+                  <button class="increment">+</button>
+                </div>
+              </div>
+              <div class="input_group">
+                <label for="productOptions">Opciones:</label>
+                <div class="select_group">
+                  <select id="piezaUno">
+                    <option value="" disabled selected>Pieza uno</option>
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                  </select>
+                  <select id="piezaDos">
+                    <option value="" disabled selected>Pieza dos</option>
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                  </select>
+                  <select id="jugo">
+                    <option value="" disabled selected>Jugo</option>
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input_group">
+                <button class="add_to_cart">Mandar al carrito</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
       
         <footer class="footer">
         
@@ -554,6 +620,36 @@
         });
         
         </script>
+
+        <script>
+        
+          document.querySelector('.btn_hero_3').addEventListener('click', function() {
+            document.querySelector('.modal_overlay').style.display = 'block';
+            document.querySelector('.show_order_pro').style.display = 'flex';
+          });
+  
+          document.querySelector('.close_show_order_pro').addEventListener('click', function() {
+            document.querySelector('.modal_overlay').style.display = 'none';
+            document.querySelector('.show_order_pro').style.display = 'none';
+          });
+  
+          document.querySelector('.increment').addEventListener('click', function() {
+            const quantityInput = document.getElementById('productQuantity');
+            let quantity = parseInt(quantityInput.value);
+            quantity++;
+            quantityInput.value = quantity;
+          });
+  
+          document.querySelector('.decrement').addEventListener('click', function() {
+            const quantityInput = document.getElementById('productQuantity');
+            let quantity = parseInt(quantityInput.value);
+            if (quantity > 1) {
+              quantity--;
+              quantityInput.value = quantity;
+            }
+          });
+          
+          </script>
 
         <script src="https://unpkg.com/scrollreveal"></script>
 
