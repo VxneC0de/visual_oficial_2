@@ -1,0 +1,373 @@
+<section class="section_container form_order">
+    <div class="payment_div">
+        <header>Orden</header>
+        <form action="#" class="form_payment" id="orderForm">
+            <div class="data">
+                <h3 class="title_form">Mi contacto</h3>
+                <div class="input-box">
+                    <label>Nombre <span>*</span></label>
+                    <input type="text" id="firstName" />
+                    <div class="error"></div>
+                </div>
+                <div class="input-box">
+                    <label>Apellido <span>*</span></label>
+                    <input type="text" id="lastName" />
+                    <div class="error"></div>
+                </div>
+                <div class="input-box">
+                    <label>Teléfono <span>*</span></label>
+                    <input type="text" id="phone" />
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="data">
+                <h3 class="title_form">Método de envío</h3>
+                <div class="div_envio">
+                    <div class="envio">
+                        <div class="pickup">Pickup</div>
+                    </div>                          
+                </div>
+            </div>
+            <div class="data">
+                <h3 class="title_form">Punto de recogida</h3>
+                <div class="div_recogida">
+                    <p>Calle los Apatames, Edificio número 5, Local único, Caracas.
+                        <br>
+                        Caracas
+                        <br>
+                        Capital
+                        <br>
+                        1011
+                    </p>
+                </div>
+            </div>
+            <div class="data">
+                <h3 class="title_form">Notas adicionales</h3>
+                <div class="input-box">
+                    <label>Notas del pedido (opcional)</label>
+                    <textarea name="" id="orderNotes" maxlength="150"></textarea>
+                </div>
+                <h5>Seleccionar la hora de recogida</h5>
+                <div class="column">
+                    <div class="input-box">
+                        <label>Fecha <span>*</span></label>
+                        <select id="pickupDate">
+                            <option value="Hoy">Hoy</option>
+                        </select>
+                        <div class="error"></div>
+                    </div>
+                    <div class="input-box">
+                        <label>Tiempo <span>*</span></label>
+                        <select id="pickupTime">
+                            <option value="asap">Tan pronto como sea posible</option>
+                            <option value="7-730">7:00 - 7:30</option>
+                            <option value="730-8">7:30 - 8:00</option>
+                            <option value="8-830">8:00 - 8:30</option>
+                            <option value="830-9">8:30 - 9:00</option>
+                            <option value="9-930">9:00 - 9:30</option>
+                            <option value="930-10">9:30 - 10:00</option>
+                            <option value="10-1030">10:00 - 10:30</option>
+                            <option value="1030-11">10:30 - 11:00</option>
+                            <option value="11-1130">11:00 - 11:30</option>
+                            <option value="1130-12">11:30 - 12:00</option>
+                            <option value="1230-13">12:30 - 13:00</option>
+                        </select>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="data">
+                <h3 class="title_form">Modo de Pago</h3>
+                <div class="metodos">
+                    <div class="payment-option" id="pago-movil">
+                        <input type="radio" name="payment" id="radio-pago-movil">
+                        <label for="radio-pago-movil" class="label_pago">Pago Móvil</label>
+                        <div class="details_movil" id="details-movil">
+                            <div class="input-box">
+                                <label for="referencia-movil">Últimos 4 números de la referencia <span>*</span></label>
+                                <input type="text" id="referencia-movil">
+                                <div class="error"></div>
+                            </div>
+                            <div class="input-box">
+                                <label for="telefono-movil">Número de teléfono donde se hizo el pago <span>*</span></label>
+                                <input type="text" id="telefono-movil">
+                                <div class="error"></div>
+                            </div>
+                            <div class="input-box_2">
+                                <input type="file" id="file-movil" accept="image/*" hidden>
+                                <div class="img-area" data-img="">
+                                    <i class='bx bxs-image-alt icon'></i>
+                                    <h3 class="title_area">Captura del pago</h3>
+                                    <p>La imagen debe ser inferior a <span>2MB</span></p>
+                                </div>
+                                <div class="select-image" id="select-image-movil"> 
+                                    <p>Subir Captura</p> 
+                                </div>
+                            </div>
+                            <div id="imageError-movil" class="error_2"></div>
+                        </div>
+                    </div>
+                    <div class="payment-option" id="efectivo">
+                        <input type="radio" name="payment" id="radio-efectivo">
+                        <label for="radio-efectivo" class="label_pago">Efectivo</label>
+                        <div class="details_efectivo" id="details-efectivo">
+                            <div class="input-box_2">
+                                <input type="file" id="file-efectivo" accept="image/*" hidden>
+                                <div class="img-area" data-img="">
+                                    <i class='bx bxs-image-alt icon'></i>
+                                    <h3 class="title_area">Captura del pago</h3>
+                                    <p>La imagen debe ser inferior a <span>2MB</span></p>
+                                </div>
+                                <div class="select-image" id="select-image-efectivo"> 
+                                    <p>Subir Captura</p> 
+                                </div>
+                            </div>
+                            <div id="imageError-efectivo" class="error_2"></div>
+                        </div>
+                    </div>
+                    <div class="payment-option" id="tarjeta">
+                        <input type="radio" name="payment" id="radio-tarjeta">
+                        <label for="radio-tarjeta" class="label_pago">Tarjeta</label>
+                        <div class="details_tarjeta" id="details-tarjeta">
+                            <div class="input-box_2 img_edit">
+                                <div class="img-area_2">
+                                    <p>Pagar directamente en caja al retirar el pedido</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-box box_submit">
+                <input type="submit" class="submit" value="Confirmar el pedido">
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Función para ocultar detalles
+        function hideAllDetails() {
+            document.querySelectorAll('.details_movil, .details_efectivo, .details_tarjeta').forEach(detail => {
+                detail.style.display = 'none';
+            });
+        }
+
+        // Función para limpiar todos los inputs y áreas de imagen
+        function clearInputs() {
+            document.querySelectorAll('.details_movil input, .details_efectivo input, .details_movil textarea, .details_efectivo textarea').forEach(input => {
+                input.value = '';
+            });
+            document.querySelectorAll('.img-area').forEach(imgArea => {
+                imgArea.innerHTML = `
+                    <i class='bx bxs-image-alt icon'></i>
+                    <h3 class="title_area">Captura del pago</h3>
+                    <p>La imagen debe ser inferior a <span>2MB</span></p>
+                `;
+                imgArea.classList.remove('active');
+                imgArea.dataset.img = '';
+            });
+        }
+
+        // Funciones para manejar errores y éxito
+        const setError = (element, message) => {
+            const errorDisplay = element.parentElement.querySelector(".error, .error_2");
+            if (errorDisplay) {
+                errorDisplay.innerText = message;
+                errorDisplay.style.display = 'block';
+            } else {
+                // For image error
+                const imageErrorDisplay = document.getElementById('imageError-' + element.id.split('-')[1]);
+                if (imageErrorDisplay) {
+                    imageErrorDisplay.innerText = message;
+                    imageErrorDisplay.style.display = 'block';
+                }
+            }
+        }
+
+        const setSuccess = (element) => {
+            const errorDisplay = element.parentElement.querySelector(".error, .error_2");
+            if (errorDisplay) {
+                errorDisplay.innerText = '';
+                errorDisplay.style.display = 'none';
+            } else {
+                // For image error
+                const imageErrorDisplay = document.getElementById('imageError-' + element.id.split('-')[1]);
+                if (imageErrorDisplay) {
+                    imageErrorDisplay.innerText = '';
+                    imageErrorDisplay.style.display = 'none';
+                }
+            }
+        }
+
+        const isValidDate = (selectedDate) => {
+            // Obtener la fecha actual ajustada a tu zona horaria (Venezuela Time)
+            let currentDate = new Date();
+            currentDate.setHours(0, 0, 0, 0); // Establecer la hora a 00:00:00
+
+            // Formatear las fechas para comparación 'YYYY-MM-DD'
+            const currentDateString = currentDate.toISOString().split('T')[0];
+            const selectedDateObject = new Date(selectedDate);
+            const selectedDateString = selectedDateObject.toISOString().split('T')[0];
+
+            return selectedDateString >= currentDateString;
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            let valid = true;
+
+            // Limpiar mensajes de error
+            document.querySelectorAll('.error, .error_2').forEach((el) => el.innerHTML = '');
+
+            // Validar campos de contacto
+            const firstName = document.getElementById('firstName');
+            const lastName = document.getElementById('lastName');
+            const phone = document.getElementById('phone');
+            
+            if (firstName.value.trim() === '') {
+                setError(firstName, 'El nombre es requerido.');
+                valid = false;
+            } else {
+                setSuccess(firstName);
+            }
+
+            if (lastName.value.trim() === '') {
+                setError(lastName, 'El apellido es requerido.');
+                valid = false;
+            } else {
+                setSuccess(lastName);
+            }
+
+            if (phone.value.trim() === '') {
+                setError(phone, 'El teléfono es requerido.');
+                valid = false;
+            } else {
+                setSuccess(phone);
+            }
+
+            // Validar fecha y hora de recogida
+            const pickupDate = document.getElementById('pickupDate');
+            const pickupTime = document.getElementById('pickupTime');
+
+            if (pickupDate.value.trim() === '') { 
+                setError(pickupDate, 'La fecha es requerida.'); 
+                valid = false; 
+            } else if (!isValidDate(pickupDate.value)) { 
+                setError(pickupDate, 'Ingresa una fecha válida.'); 
+                valid = false; 
+            } else { 
+                setSuccess(pickupDate); 
+            }
+
+            if (pickupTime.value.trim() === '') {
+                setError(pickupTime, 'El tiempo es requerido.');
+                valid = false;
+            } else {
+                setSuccess(pickupTime);
+            }
+
+            // Validar campos de métodos de pago
+            if (document.getElementById('radio-pago-movil').checked) {
+                const referenciaMovil = document.getElementById('referencia-movil');
+                const telefonoMovil = document.getElementById('telefono-movil');
+                const fileMovil = document.getElementById('file-movil');
+
+                if (referenciaMovil.value.trim() === '') {
+                    setError(referenciaMovil, 'La referencia es requerida.');
+                    valid = false;
+                } else {
+                    setSuccess(referenciaMovil);
+                }
+
+                if (telefonoMovil.value.trim() === '') {
+                    setError(telefonoMovil, 'El teléfono es requerido.');
+                    valid = false;
+                } else {
+                    setSuccess(telefonoMovil);
+                }
+
+                if (fileMovil.value.trim() === '') {
+                    setError(fileMovil, 'La captura del pago es requerida.');
+                    valid = false;
+                } else {
+                    setSuccess(fileMovil);
+                }
+
+            } else if (document.getElementById('radio-efectivo').checked) {
+                const fileEfectivo = document.getElementById('file-efectivo');
+
+                if (fileEfectivo.value.trim() === '') {
+                    setError(fileEfectivo, 'La captura del pago es requerida.');
+                    valid = false;
+                } else {
+                    setSuccess(fileEfectivo);
+                }
+
+            } else if (document.getElementById('radio-tarjeta').checked) {
+                // Validar método de pago tarjeta (si hay campos adicionales)
+            }
+
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+
+        // Listeners para los inputs de tipo radio
+        document.querySelector('#radio-pago-movil').addEventListener('click', function() {
+            hideAllDetails();
+            clearInputs();
+            document.querySelector('.details_movil').style.display = 'flex';
+            console.log('Pago Móvil seleccionado');
+        });
+
+        document.querySelector('#radio-efectivo').addEventListener('click', function() {
+            hideAllDetails();
+            clearInputs();
+            document.querySelector('.details_efectivo').style.display = 'flex';
+            console.log('Efectivo seleccionado');
+        });
+
+        document.querySelector('#radio-tarjeta').addEventListener('click', function() {
+            hideAllDetails();
+            clearInputs();
+            document.querySelector('.details_tarjeta').style.display = 'flex';
+            console.log('Tarjeta seleccionada');
+        });
+
+        // Funcionalidad para la subida de imágenes
+        const selectImages = document.querySelectorAll('.select-image');
+        selectImages.forEach(selectImage => {
+            const inputFile = selectImage.parentElement.querySelector('input[type="file"]');
+            const imgArea = selectImage.parentElement.querySelector('.img-area');
+            
+            selectImage.addEventListener('click', () => {
+                inputFile.click();
+            });
+            
+            inputFile.addEventListener('change', () => {
+                const image = inputFile.files[0];
+                if (image.size < 2000000) {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        // Elimina todas las imágenes previas
+                        const allImg = imgArea.querySelectorAll('img');
+                        allImg.forEach(img => img.remove());
+                        // Añade la nueva imagen
+                        const imgUrl = reader.result;
+                        const img = document.createElement('img');
+                        img.src = imgUrl;
+                        imgArea.appendChild(img);
+                        imgArea.classList.add('active');
+                        imgArea.dataset.img = image.name;
+                    };
+                    
+                    reader.readAsDataURL(image);
+                } else {
+                    setError(inputFile, 'La imagen debe ser menor a 2MB');
+                }
+            });
+        });
+    });
+</script>
+
