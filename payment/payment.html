@@ -8,15 +8,6 @@
     <link rel="stylesheet" href="./payment.css">
     <title>Pago</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-
-    <style>
-        .details_movil, .details_efectivo, .details_tarjeta {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-        }
-    </style>
-
 </head>
 <body>
     
@@ -32,23 +23,6 @@
                 
                 <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
                 <li><a href="#">Inicio</a></li>
-            
-                <li>
-                    <a href="#" class="desktop-item">Productos ▾</a>
-                    <input type="checkbox" id="showDrop">
-                    <label for="showDrop" class="mobile-item">Productos ▾</label>
-                
-                    <ul class="drop-menu">
-                        <li><a href="#">Empanadas</a></li>
-                        <li><a href="#">Pastelitos</a></li>
-                        <li><a href="#">Especiales</a></li>
-                        <li><a href="#">Bebidas Frías</a></li>
-                        <li><a href="#">Bollitos</a></li>
-                        <li><a href="#">Hallacas</a></li>
-                    </ul>
-                </li>
-            
-                <li><a href="#">Contactos</a></li>
         
             </ul>
         
@@ -106,8 +80,8 @@
                     <div class="div_envio">
                         
                         <div class="envio">
-                            <div>Pickup</div>
-                        </div>
+                            <div class="pickup">Pickup</div>
+                        </div>                          
 
                     </div>
 
@@ -184,17 +158,17 @@
                         <div class="payment-option" id="pago-movil">
                             
                             <input type="radio" name="payment" id="radio-pago-movil">
-                            <label for="radio-pago-movil">Pago Móvil</label>
+                            <label for="radio-pago-movil" class="label_pago">Pago Móvil</label>
                             <div class="details_movil" id="details-movil">
 
                                 <div class="input-box">
-                                    <label for="referencia-movil">Ultimos 4 números de la referencia:</label>
+                                    <label for="referencia-movil">Ultimos 4 números de la referencia <span>*</span></label>
                                     <input type="text" id="referencia-movil">
                                     <div class="error"></div>
                                 </div>
 
                                 <div class="input-box">
-                                    <label for="telefono-movil">Número de telefono donde se hizo el pago:</label>
+                                    <label for="telefono-movil">Número de telefono donde se hizo el pago <span>*</span></label>
                                     <input type="text" id="telefono-movil">
                                     <div class="error"></div>
                                 </div>
@@ -219,7 +193,7 @@
                         <div class="payment-option" id="efectivo">
 
                             <input type="radio" name="payment" id="radio-efectivo">
-                            <label for="radio-efectivo">Efectivo</label>
+                            <label for="radio-efectivo" class="label_pago">Efectivo</label>
                             <div class="details_efectivo" id="details-efectivo">
                           
                                 <div class="input-box_2">
@@ -242,7 +216,7 @@
                         <div class="payment-option" id="tarjeta">
 
                             <input type="radio" name="payment" id="radio-tarjeta">
-                            <label for="radio-tarjeta">Tarjeta</label>
+                            <label for="radio-tarjeta" class="label_pago">Tarjeta</label>
                             <div class="details_tarjeta" id="details-tarjeta">
                           
                                 <div class="input-box_2 img_edit">
@@ -399,63 +373,113 @@
 
     <script>
     
-    document.querySelector('#radio-pago-movil').addEventListener('click', function() {
-        hideAllDetails();
-        document.querySelector('.details_movil').style.display = 'flex';
-        console.log('Pago Móvil seleccionado');
-    });
-
-    document.querySelector('#radio-efectivo').addEventListener('click', function() {
-        hideAllDetails();
-        document.querySelector('.details_efectivo').style.display = 'flex';
-        console.log('Efectivo seleccionado');
-    });
-
-    document.querySelector('#radio-tarjeta').addEventListener('click', function() {
-        hideAllDetails();
-        document.querySelector('.details_tarjeta').style.display = 'flex';
-        console.log('Tarjeta seleccionada');
-    });
-
+    document.addEventListener('DOMContentLoaded', () => {
+    // Función para ocultar detalles
     function hideAllDetails() {
         document.querySelectorAll('.details_movil, .details_efectivo, .details_tarjeta').forEach(detail => {
             detail.style.display = 'none';
         });
     }
 
+    // Función para limpiar todos los inputs y áreas de imagen
+    function clearInputs() {
+        document.querySelectorAll('.details_movil input, .details_efectivo input, .details_movil textarea, .details_efectivo textarea').forEach(input => {
+            input.value = '';
+        });
+        document.querySelectorAll('.img-area').forEach(imgArea => {
+            imgArea.innerHTML = `
+                <i class='bx bxs-image-alt icon'></i>
+                <h3 class="title_area">Captura del pago</h3>
+                <p>La imagen debe ser inferior a <span>2MB</span></p>
+            `;
+            imgArea.classList.remove('active');
+            imgArea.dataset.img = '';
+        });
+    }
+
+    // Listeners para los inputs de tipo radio
+    document.querySelector('#radio-pago-movil').addEventListener('click', function() {
+        hideAllDetails();
+        clearInputs();
+        document.querySelector('.details_movil').style.display = 'flex';
+        console.log('Pago Móvil seleccionado');
+    });
+
+    document.querySelector('#radio-efectivo').addEventListener('click', function() {
+        hideAllDetails();
+        clearInputs();
+        document.querySelector('.details_efectivo').style.display = 'flex';
+        console.log('Efectivo seleccionado');
+    });
+
+    document.querySelector('#radio-tarjeta').addEventListener('click', function() {
+        hideAllDetails();
+        clearInputs();
+        document.querySelector('.details_tarjeta').style.display = 'flex';
+        console.log('Tarjeta seleccionada');
+    });
+
+    // Funcionalidad para la subida de imágenes
+    const selectImages = document.querySelectorAll('.select-image');
+    selectImages.forEach(selectImage => {
+        const inputFile = selectImage.parentElement.querySelector('input[type="file"]');
+        const imgArea = selectImage.parentElement.querySelector('.img-area');
+        
+        selectImage.addEventListener('click', () => {
+            inputFile.click();
+        });
+        
+        inputFile.addEventListener('change', () => {
+            const image = inputFile.files[0];
+            if (image.size < 2000000) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    // Elimina todas las imágenes previas
+                    const allImg = imgArea.querySelectorAll('img');
+                    allImg.forEach(img => img.remove());
+                    // Añade la nueva imagen
+                    const imgUrl = reader.result;
+                    const img = document.createElement('img');
+                    img.src = imgUrl;
+                    imgArea.appendChild(img);
+                    imgArea.classList.add('active');
+                    imgArea.dataset.img = image.name;
+                };
+                
+                reader.readAsDataURL(image);
+            } else {
+                alert("La imagen debe ser menor a 2MB");
+            }
+        });
+    });
+});
+
     </script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const pickupDiv = document.querySelector('.pickup');
+    const radioInputs = document.querySelectorAll('input[name="payment"]');
     
-    const selectImage = document.querySelector('.select-image');
-    const inputFile = document.querySelector('#file');
-    const imgArea = document.querySelector('.img-area');
+    pickupDiv.addEventListener('click', () => {
+        // Desmarcar otros radio inputs
+        radioInputs.forEach(input => input.checked = false);
+        // Remover la clase 'selected' de todos los labels
+        document.querySelectorAll('.payment-option label').forEach(label => {
+            label.classList.remove('selected');
+        });
+        // Agregar la clase 'selected' al div pickup
+        pickupDiv.classList.add('selected');
+    });
 
-    selectImage.addEventListener('click', function () {
-        inputFile.click();
-    })
+    // Listener para desmarcar el div pickup cuando un radio input se selecciona
+    radioInputs.forEach(input => {
+        input.addEventListener('click', () => {
+            pickupDiv.classList.remove('selected');
+        });
+    });
+});
 
-    inputFile.addEventListener('change', function () {
-        const image = this.files[0];
-        if(image.size < 2000000) {
-            const reader = new FileReader();
-            reader.onload = ()=> {
-                const allImg = imgArea.querySelectorAll('img');
-                allImg.forEach(item=> item.remove());
-                const imgUrl = reader.result;
-                const img = document.createElement('img');
-                img.src = imgUrl;
-                imgArea.appendChild(img);
-                imgArea.classList.add('active');
-                imgArea.dataset.img = image.name;
-            }
-            
-            reader.readAsDataURL(image);
-        } else {
-            alert("Image size more than 2MB");
-        }
-    })
-  
     </script>
 
     <script>
