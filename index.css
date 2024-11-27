@@ -1,1 +1,0 @@
-.select_group { display: flex; gap: 10px; flex-direction: column; } .select_group select { padding: 8px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; color: #333; } #promotionGroups { max-height: 50vh; overflow-y: auto; padding-right: 10px; /* Añadir un poco de espacio para el scrollbar */ }
