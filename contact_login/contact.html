@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./contact.css">
+    <title>Sing In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+
+    <nav>
+        <div class="wrapper_nav">
+            
+            <div class="logo"><a href="#">LOGO.</a></div>
+            <input type="radio" name="slider" id="menu-btn">
+            <input type="radio" name="slider" id="close-btn">
+            
+            <ul class="nav-links">
+                
+                <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+                <li><a href="#">Tienda</a></li>
+                
+                <li><a href="#">Contactos</a></li>
+            
+            </ul>
+            
+            <div class="header-right">
+                
+                <div class="user_icon">
+                    <a href="#"><ion-icon name="person"></ion-icon></a>
+                </div>
+                
+            </div>
+
+            <div class="user_sidebar">
+              
+              <button class="close_user"><i class="fas fa-times"></i></button>
+              
+              <div class="user_header">
+                <div class="name_user">
+                  <h2>Carol</h2>
+                </div>
+                <div class="email_user">
+                  <h4>carol@gmail.com</h4>
+                </div>
+              </div>
+
+              <div class="user_items">
+                
+                <div class="user_item">
+
+                  <div class="item_details">
+                    <div class="item_details_title_user">
+                      <i class='bx bx-list-ul'></i>
+                      <a href="#">Mis Ordenes</a>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="user_item">
+
+                  <div class="item_details">
+                    <div class="item_details_title_user">
+                      <i class='bx bx-log-out-circle'></i>
+                      <a href="#">Cerrar Sesión</a>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+              
+            </div>
+            
+            <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        
+        </div>
+    
+    </nav>
+
+
+    
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const userIcon = document.querySelector('.user_icon a');
+        const userSidebar = document.querySelector('.user_sidebar');
+        const closeuser = document.querySelector('.close_user');
+    
+        userIcon.addEventListener('click', function(event) {
+          event.preventDefault();
+          userSidebar.style.right = '0';
+        });
+    
+        closeuser.addEventListener('click', function() {
+          userSidebar.style.right = '-100%';
+        });
+        
+      });
+    </script>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</body>
+</html>
