@@ -896,8 +896,13 @@ nav input {
     background-repeat: no-repeat;
 }
 
-.footer_logo img {
+.footer_logo a {
     max-width: 250px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 600;
+    font-style: italic;
 }
 
 .footer_content {
